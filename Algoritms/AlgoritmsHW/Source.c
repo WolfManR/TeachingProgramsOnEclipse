@@ -9,39 +9,40 @@
 
 #include <stdio.h>
 #include <string.h>
+#define HWCount 1
+
 typedef struct{
-	int Number;
 	char Theme[256];
+	void (*func)();
 }HW;
 
 void HWMenu();
 
-int HW1_main();
+void HW1_main();
 
 int main(){
 	setvbuf(stdout, NULL, _IONBF, 0);
-	HW homeWorks[8];
-	homeWorks[0].Number=1;
-	strcpy(homeWorks[0].Theme,"Simple Algorithms");
-	HWMenu(homeWorks,1);
+	HW homeWorks[HWCount] ={
+		{.Theme = "Простые алгоритмы", .func = HW1_main}
+	};
+
+	HWMenu(homeWorks,HWCount);
 	int userInput=0;
-	printf("Enter HW to play: ");
+	printf("Введите номер ДЗ: ");
 	scanf("%d",&userInput);
-	switch(userInput){
-	case 1:
-		HW1_main();
-		break;
-	default:
-		printf("Something go wrong\n");
-		break;
-	}
-	//setbuf(stdout, NULL);
-	//setbuf(stdin, NULL);
+	puts("/////////////////////////////////////////////////////");
+	if(userInput >= 0 && userInput < HWCount)
+		homeWorks[userInput].func();
+	else if(userInput == -1)
+		printf("До свидания!");
+	else
+		printf("Что-то пошло не так\n");
 }
+
 void HWMenu(HW* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
-		printf("HW: %d\n  Theme: %s\n\n",(array + i)->Number, (array+i)->Theme);
+		printf("Номер ДЗ: %d\n  Тема: %s\n\n",i, (array+i)->Theme);
 	}
-	printf("Exit: 0\n");
+	printf("Команда на выход: -1\n");
 }
 
