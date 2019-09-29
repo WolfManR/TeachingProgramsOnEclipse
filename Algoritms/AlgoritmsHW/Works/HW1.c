@@ -6,61 +6,60 @@
  */
 #include "Works.h"
 #include <stdio.h>
-#include <string.h>
 #include <math.h>
 
 #define TCount 8
 
-void Task1();
-void Task3();
-void Task4();
-void Task6();
-void Task7();
-void Task9();
-void Task10();
-void Task14();
+void HW1_Task1();
+void HW1_Task3();
+void HW1_Task4();
+void HW1_Task6();
+void HW1_Task7();
+void HW1_Task9();
+void HW1_Task10();
+void HW1_Task14();
 
 void HW1_main(){
 	Task tasks[TCount] = {
 			{
 					.Number = 1,
 					.ToDo = "Ввести вес и рост человека. Рассчитать и вывести индекс массы тела по формуле I=m/(h*h);\n где m-масса тела в килограммах, h - рост в метрах.",
-					.func = Task1
+					.func = HW1_Task1
 			},
 			{
 					.Number = 3,
 					.ToDo = "Написать программу обмена значениями двух целочисленных переменных:\n	b. *без использования третьей переменной.",
-					.func = Task3
+					.func = HW1_Task3
 			},
 			{
 					.Number = 4,
 					.ToDo = "Написать программу нахождения корней заданного квадратного уравнения.",
-					.func = Task4
+					.func = HW1_Task4
 			},
 			{
 					.Number = 6,
 					.ToDo = "Ввести возраст человека (от 1 до 150 лет) и вывести его вместе с последующим словом «год», «года» или «лет».",
-					.func = Task6
+					.func = HW1_Task6
 			},
 			{
 					.Number = 7,
 					.ToDo = "Имеются числовые координаты двух полей шахматной доски (x1,y1,x2,y2). \nТребуется определить, относятся ли к поля к одному цвету или нет.",
-					.func = Task7
+					.func = HW1_Task7
 			},
 			{
 					.Number = 9,
 					.ToDo = "Даны целые положительные числа N и K. Используя только операции сложения и вычитания, \nнайти частное от деления нацело N на K, а также остаток от этого деления.",
-					.func = Task9
+					.func = HW1_Task9
 			},
 			{
 					.Number = 10,
 					.ToDo = "Дано целое число N (> 0). С помощью операций деления нацело и взятия остатка от деления определить,\n имеются ли в записи числа N нечетные цифры.\n	Если имеются, то вывести True, если нет — вывести False.",
-					.func = Task10
+					.func = HW1_Task10
 			},
 			{
 					.Number = 14,
 					.ToDo = "* Автоморфные числа.  Натуральное число называется автоморфным, если оно равно последним цифрам своего квадрата.  Например, 25^2 = 625.\n Напишите программу, которая выводит на экран все автоморфные числа, в пределах 1_000_000",
-					.func = Task14
+					.func = HW1_Task14
 			}
 	};
 
@@ -81,7 +80,7 @@ void HW1_main(){
  *   где m-масса тела в килограммах,
  *   h - рост в метрах.
 */
-void Task1(){
+void HW1_Task1(){
 	double weight,height;
 
 	printf("Введите массу тела в кг");
@@ -112,7 +111,7 @@ void swapNotWithThird(int* first, int* second) {
 	*first ^= *second;
 }
 
-void Task3() {
+void HW1_Task3() {
 	int x,y;
 
 	printf("Введите значение первой переменной: ");
@@ -164,7 +163,7 @@ int calculateSquareEquation(int a, int b, int c, float* x1, float* x2) {
 	}
 }
 
-void Task4(){
+void HW1_Task4(){
 	int a, b, c;
 	float x1, x2;
 
@@ -209,7 +208,7 @@ char* ageAdder(int age) {
         return "лет";
 }
 
-void Task6(){
+void HW1_Task6(){
 	int inputAge = 0;
 
 	do{
@@ -233,7 +232,7 @@ int isInDescRange(int coordinate){
 	else return 0;
 }
 
-void Task7(){
+void HW1_Task7(){
 	int x1,y1,x2,y2 = 0;
 	int flag = 0;
 
@@ -268,7 +267,7 @@ void Task7(){
  *  Используя только операции сложения и вычитания, найти частное от деления нацело N на K,
  *  а также остаток от этого деления.
 */
-void Task9(){
+void HW1_Task9(){
 	int n,k;
 
 	printf("делимое число: ");
@@ -295,7 +294,7 @@ void Task9(){
  *  Если имеются, то вывести True,
  *  если нет — вывести False.
 */
-void Task10(){
+void HW1_Task10(){
 	int n=0;
 
 	printf("Введите целое число больше нуля: ");
@@ -318,7 +317,7 @@ void Task10(){
  * 		Натуральное число называется автоморфным, если оно равно последним цифрам своего квадрата. Например, 25^2 = 625.
  * Напишите программу, которая выводит на экран все автоморфные числа, в пределах 1_000_000
 */
-void Task14(){
+void HW1_Task14(){
 	const int max = 1000000;
 	int sqrNum, width, temp;
 	for(int n=0;n<=max;n++){
