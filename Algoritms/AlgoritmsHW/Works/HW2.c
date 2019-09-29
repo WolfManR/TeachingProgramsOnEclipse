@@ -78,8 +78,42 @@ void HW2_Task1(){
  *   b. рекурсивно;
  *   c. *рекурсивно, использу€ свойство чЄтности степени.
 */
-void HW2_Task2(){
+long power(int a, int b)
+{
+   long p = 1;
+   while(b)
+   {
+       p *= a;
+       b--;
+   }
+   return p;
+}
 
+long power2(int a, int b){
+	if(b==0) return 1;
+	else return a*power2(a,--b);
+}
+
+long quickPow(long n,int a, int b) {
+    if (b!=0) {
+        if (b % 2!=0) return quickPow(n*a,a,--b);
+        else return quickPow(n, a*a, b/2);
+    }
+    else return n;
+}
+
+
+void HW2_Task2(){
+	int a,b;
+
+	printf("¬ведите число ");
+	scanf("%d",&a);
+	printf("¬ведите положительное значение степени ");
+	scanf("%d",&b);
+
+	printf("без рекурсии %li",power(a,b));
+	printf("\n\nс рекурсией %li",power2(a,b));
+	printf("\n\nускоренное возведение в степень %li",quickPow(1,a,b));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -92,6 +126,19 @@ void HW2_Task2(){
  *    а) с использованием массива;
  *    б) с использованием рекурсии.
 */
-void HW2_Task3(){
+void Adder(int* number){
+	number++;
+}
 
+void Multiply(int* number){
+	*number*=2;
+}
+
+void HW2_Task3(){
+	int number;
+
+	printf("¬ведите число ");
+	scanf("%d",&number);
+
+	void (*op[2])(int*) = {Adder,Multiply};
 }
