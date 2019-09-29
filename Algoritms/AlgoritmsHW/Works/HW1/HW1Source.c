@@ -251,20 +251,10 @@ int isInDescRange(int coordinate){
 	else return 0;
 }
 
-
-int isBlack(int x, int y){
-	if(x%2){
-		if(y%2) return 1;
-	}
-	else {
-		if(y%2==0) return 1;
-	}
-	return 0;
-}
-
 void Task7(){
 	int x1,y1,x2,y2 = 0;
 	int flag = 0;
+
 	do {
 		printf("¬ведите координаты двух полей на шахматной доске, размерами 8*8\n");
 		printf("ѕервое поле по оси x: ");
@@ -284,10 +274,10 @@ void Task7(){
 		if(isInDescRange(y2)) continue;
 		flag = 1;
 	} while (flag == 0);
-	if(x1==x2 && y1==y2) printf("True");
-	else{
-		if(isBlack(x1,y1)==isBlack(x2,y2)) printf("True");
-		else printf("False");
+
+	if(((x1 + y1) % 2) == ((x2 + y2) % 2))
+		printf("True");
+	else printf("False");
 	}
 }
 
