@@ -4,23 +4,12 @@
  *  Created on: 25 сент. 2019 г.
  *      Author: Ivan Barmin
  */
+#include "Works.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+
 #define TCount 8
-
-typedef struct{
-	char ToDo[400];
-	int Number;
-	void (*func)();
-}Task;
-
-void TaskMenu(Task* array, int arrLength){
-	for(int i = 0; i < arrLength; i++){
-		printf("КОМАНДА: %d\n Номер задачи: %d\n Задание: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
-	}
-	printf("Команда на выход: -1\n");
-}
 
 void Task1();
 void Task3();
@@ -30,7 +19,6 @@ void Task7();
 void Task9();
 void Task10();
 void Task14();
-
 
 void HW1_main(){
 	Task tasks[TCount] = {
@@ -82,12 +70,7 @@ void HW1_main(){
 	printf("Введите команду задачи: ");
 	scanf("%d",&userInput);
 
-	if(userInput >= 0 && userInput < TCount)
-			tasks[userInput].func();
-		else if(userInput == -1)
-			printf("До свидания!");
-		else
-			printf("Что-то пошло не так\n");
+	PlayTask(userInput, TCount, tasks);
 }
 
 
