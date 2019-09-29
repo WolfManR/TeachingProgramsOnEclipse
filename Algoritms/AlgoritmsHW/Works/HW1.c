@@ -6,6 +6,7 @@
  */
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #define TCount 8
 
 typedef struct{
@@ -158,8 +159,6 @@ void Task3() {
  *  4.
  *  Написать программу нахождения корней заданного квадратного уравнения.
 */
-#include <math.h>
-
 int calculateSquareEquation(int a, int b, int c, float* x1, float* x2) {
 	double D = b * b - 4 * a * c;
 	if(a!=0){
