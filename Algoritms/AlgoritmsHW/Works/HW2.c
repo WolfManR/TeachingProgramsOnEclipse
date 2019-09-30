@@ -138,10 +138,10 @@ void Multiply(int* number){
 }
 
 void HW2_Task3(){
-	int number;
+	int num = 3;
+	int max = 20;
 
-	printf("¬ведите число ");
-	scanf("%d",&number);
+	int arr[max - num];
+	int programs = 0;
 
-	void (*op[2])(int*) = {Adder,Multiply};
 }
