@@ -48,10 +48,19 @@ void HW2_main(){
  *  –еализовать функцию перевода из 10 системы в двоичную использу€ рекурсию.
 */
 void binary(int number,int counter, char* out){
-	if(number>0){
-		out[--counter]=(number%2)?'1':'0';
-		binary(number/2,counter,out);
+	if(number > 0){
+		out[--counter] = (number%2)?'1':'0';
+		binary(number/2, counter, out);
 	}
+}
+
+int capacity(int input){
+	int i = 0;
+	while(input != 0){
+			input >>= 1;
+			i++;
+		}
+	return i;
 }
 
 void HW2_Task1(){
@@ -60,15 +69,9 @@ void HW2_Task1(){
 	scanf("%d",&input);
 
 	char out[64];
-	int i = 0;
-	int temp = input;
-	while(temp!=0){
-		temp>>=1;
-		i++;
-	}
 
-	binary(input,i,out);
-	printf("%s",out);
+	binary(input, capacity(input), out);
+	printf("%s", out);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
