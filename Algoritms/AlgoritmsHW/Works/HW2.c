@@ -129,19 +129,23 @@ void HW2_Task2(){
  *    а) с использованием массива;
  *    б) с использованием рекурсии.
 */
-void Adder(int* number){
-	number++;
+
+void ways(int number, int max, int* result){
+	if(number==max) (*result)++;
+	else if(number<max && (number+1<max || number*2<max)){
+		ways(number+1, max, result);
+		ways(number*2, max, result);
+	}
 }
 
-void Multiply(int* number){
-	*number*=2;
+void ways2(int number, int max, int* result, int* arr, int arrLength){
+
 }
 
 void HW2_Task3(){
-	int num = 3;
-	int max = 20;
+	int num = 3, max = 20, programs = 0;
 
-	int arr[max - num];
-	int programs = 0;
-
+	int* arr;
+	ways(num, max, &programs);
+	printf(" олличество программ: %d", programs);
 }
