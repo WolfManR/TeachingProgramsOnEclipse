@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#define HWCount 1
+#define HWCount 2
 
 typedef struct{
 	char Theme[256];
@@ -19,11 +19,13 @@ typedef struct{
 void HWMenu();
 
 void HW1_main();
+void HW2_main();
 
 int main(){
 	setvbuf(stdout, NULL, _IONBF, 0);
 	HW homeWorks[HWCount] ={
-		{.Theme = "Простые алгоритмы", .func = HW1_main}
+		{.Theme = "Простые алгоритмы", .func = HW1_main},
+		{.Theme = "Асимптотическая сложность алгоритма. Рекурсия", .func = HW2_main}
 	};
 
 	HWMenu(homeWorks,HWCount);
