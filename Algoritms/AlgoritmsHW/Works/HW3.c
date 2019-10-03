@@ -52,44 +52,85 @@ void HW3_main(){
 */
 int bubbleSort(int* arr, int len, void (*swap)()) {
 	int operations = 0;
-  for (int i = 0; i < len; i++) {
-	for (int j = 0; j < len - 1; j++) {
-	  if (arr[j] > arr[j + 1])
-		swap(&arr[j], &arr[j + 1]);
-	  operations++;
+
+	for (int i = 0; i < len; i++) {
+		for (int j = 0; j < len - 1; j++) {
+			operations++;
+			if (arr[j] > arr[j + 1])
+				operations++;
+				swap(&arr[j], &arr[j + 1]);
+		}
 	}
-  }
-  return operations;
+
+	return operations;
 }
 
 int pickSort(int* arr, int len, void (*swap)()) {
 	int operations = 0;
-  for (int i = 0; i < len; i++) {
-	int flag = i;
-	operations++;
-	for (int j = i + 1; j < len; j++) {
-	  if (arr[j] < arr[flag])
-		flag = j;
-	  operations++;
+
+	for (int i = 0; i < len; i++) {
+		operations++;
+		int flag = i;
+		for (int j = i + 1; j < len; j++) {
+			operations++;
+			if (arr[j] < arr[flag]){
+				operations++;
+				flag = j;
+			}
+		}
+		swap(&arr[i], &arr[flag]);
+		operations++;
 	}
-	swap(&arr[i], &arr[flag]);
-	operations++;
-  }
+
   return operations;
 }
 
 void HW3_Task1(){
 	int Size= 20;
- int arr[Size];
- fillArray(arr,Size);
+	int arr[Size];
+	fillArray(arr,Size);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  2.
  *  Реализовать шейкерную сортировку.
 */
-void HW3_Task2(){
+int cocktailSort(int* arr, int len, void (*swap)() ){
+	int operations = 0;
 
+	for (int i = 0; i < len-1; ++i) {
+		operations+=2;
+		int j,k = 0;
+		for (j = k; j < len-(i+1); ++j) {
+			operations++;
+			if (arr[j] > arr[j + 1]){
+				operations++;
+				swap(&arr[j], &arr[j + 1]);
+			}
+		}
+		for (k = j-1; k > i; --k) {
+			operations++;
+			if (arr[k] > arr[k - 1]){
+				operations++;
+				swap(&arr[k], &arr[k - 1]);
+			}
+		}
+	}
+
+	return operations;
+}
+
+void HW3_Task2(){
+	int Size= 20;
+	int arr[Size];
+	fillArray(arr,Size);
+
+	printf("before: ");
+	printArray(arr, Size);
+
+	cocktailSort(arr, Size	, swap );
+	printf("after:  ");
+	printArray(arr,Size);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
