@@ -56,10 +56,32 @@ int bubbleSort(int* arr, int len, void (*swap)()) {
 	for (int i = 0; i < len; i++) {
 		for (int j = 0; j < len - 1; j++) {
 			operations++;
-			if (arr[j] > arr[j + 1])
+			if (arr[j] > arr[j + 1]){
 				operations++;
 				swap(&arr[j], &arr[j + 1]);
+			}
 		}
+	}
+
+	return operations;
+}
+
+int bubbleSort2(int* arr, int len, void (*swap)()) {
+	int operations = 0;
+
+	for (int i = 0; i < len; i++) {
+		operations++;
+		int changed = 0;
+		for (int j = 0; j < len - 1; j++) {
+			operations++;
+			if (arr[j] > arr[j + 1]){
+				operations+=2;
+				swap(&arr[j], &arr[j + 1]);
+				changed = 1;
+			}
+		}
+		if(changed == 0)
+			break;
 	}
 
 	return operations;
@@ -85,10 +107,45 @@ int pickSort(int* arr, int len, void (*swap)()) {
   return operations;
 }
 
+int insertSort(int* arr, int len, void (*swap)()){
+	int operations = 0;
+	
+	for (int i = 0; i < len; i++)
+	    {
+			operations+=2;
+	        int temp = arr[i];
+	        int j = i;
+	        while (j > 0 && arr[j - 1] > temp)
+	        {            
+	        	operations+=2;
+	            swap(&arr[j], &arr[j - 1]);
+	            j--;
+	        }
+	    }
+	
+	return operations;
+}
+
+int cocktailSort(int* arr, int len, void (*swap)() );
+
 void HW3_Task1(){
 	int Size= 20;
 	int arr[Size];
+	printf("Колличество операций разными сортировками\n");
 	fillArray(arr,Size);
+	printf("\n%d	Пузырьковая сортировка(базовая)",bubbleSort(arr, Size, swap));
+
+	fillArray(arr,Size);
+	printf("\n%d	Пузырьковая сортировка(оптимизированная)",bubbleSort2(arr, Size, swap));
+
+	fillArray(arr,Size);
+	printf("\n%d	Сортировка выборкой", pickSort(arr, Size, swap));
+
+	fillArray(arr,Size);
+	printf("\n%d	Сортировка вставкой", insertSort(arr, Size, swap));
+
+	fillArray(arr,Size);
+	printf("\n%d	Шейкерная сортировка", cocktailSort(arr, Size, swap));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -98,21 +155,25 @@ void HW3_Task1(){
 int cocktailSort(int* arr, int len, void (*swap)() ){
 	int operations = 0;
 
-	for (int i = 0; i < len-1; ++i) {
-		operations+=2;
+	for (int i = 0; i < len-1; ++i) {					// ОШИБКА
+		operations+=3;
 		int j,k = 0;
-		for (j = k; j < len-(i+1); ++j) {
-			operations++;
-			if (arr[j] > arr[j + 1]){
+		if(i%2){
+			for (j = k; j < len-(i+1); ++j) {
 				operations++;
-				swap(&arr[j], &arr[j + 1]);
+				if (arr[j] > arr[j + 1]){
+					operations++;
+					swap(&arr[j], &arr[j + 1]);
+				}
 			}
 		}
-		for (k = j-1; k > i; --k) {
-			operations++;
-			if (arr[k] > arr[k - 1]){
+		else{
+			for (k = j-1; k > i; --k) {
 				operations++;
-				swap(&arr[k], &arr[k - 1]);
+				if (arr[k] > arr[k - 1]){
+					operations++;
+					swap(&arr[k], &arr[k - 1]);
+				}
 			}
 		}
 	}

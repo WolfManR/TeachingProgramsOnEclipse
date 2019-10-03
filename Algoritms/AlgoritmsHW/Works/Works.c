@@ -7,6 +7,7 @@
 #include "Works.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 
@@ -29,6 +30,7 @@ void PlayTask(int input, int TCount, Task* tasks){
 
 ///// Array Help From Lessons
 void fillArray(int* arr, int len) {
+	srand(time(NULL));
   int i;
   for (i = 0; i < len; i++) {
 	arr[i] = rand() % 100;
