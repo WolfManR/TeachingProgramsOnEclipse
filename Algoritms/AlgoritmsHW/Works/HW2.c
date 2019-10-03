@@ -47,20 +47,13 @@ void HW2_main(){
  *  1.
  *  Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.
 */
-void binary(int number,int counter, char* out){
-	if(number > 0){
-		out[--counter] = (number%2)?'1':'0';
-		binary(number/2, counter, out);
-	}
-}
-
-int capacity(int input){
-	int i = 0;
-	while(input != 0){
-			input >>= 1;
-			i++;
-		}
-	return i;
+void binary(int n, char* b) {
+    if (n>0)					//if(n)
+        binary(n / 2, b);
+    else
+    	return;
+    strcat(b, (n % 2) ? "1" : "0");
+    return;
 }
 
 void HW2_Task1(){
@@ -68,9 +61,8 @@ void HW2_Task1(){
 	printf("Введите число десятичной системы счисления:\n");
 	scanf("%d",&input);
 
-	char out[64];
-
-	binary(input, capacity(input), out);
+	char out[64]="";
+	binary(input, out);
 	printf("%s", out);
 }
 
@@ -137,7 +129,15 @@ void ways(int number, int max, int* result){
 		ways(number*2, max, result);
 	}
 }
-
+/// Позже разобраться почему верхнее считает неправильно и доделать дз
+int calc(int from, int to) {
+	if (from < to)
+		return calc(from + 1, to) + calc(from * 2, to);
+	else if (from == to)
+		return 1;
+	else
+		return 0;
+}
 void ways2(int number, int max, int* result, int* arr, int arrLength){
 
 }
@@ -145,7 +145,8 @@ void ways2(int number, int max, int* result, int* arr, int arrLength){
 void HW2_Task3(){
 	int num = 3, max = 20, programs = 0;
 
-	int* arr;
+
 	ways(num, max, &programs);
 	printf("Колличество программ: %d", programs);
+	printf("\nКолличество программ: %d", calc(num,max));
 }
