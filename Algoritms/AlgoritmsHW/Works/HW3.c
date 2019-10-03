@@ -43,14 +43,45 @@ void HW3_main(){
 	PlayTask(userInput, TCount, tasks);
 }
 
+
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  1.
  *  Попробовать оптимизировать пузырьковую сортировку.
  *  Сравнить количество операций сравнения оптимизированной и не оптимизированной программы.
  *  Написать функции сортировки, которые возвращают количество операций.
 */
-void HW3_Task1(){
+int bubbleSort(int* arr, int len, void (*swap)()) {
+	int operations = 0;
+  for (int i = 0; i < len; i++) {
+	for (int j = 0; j < len - 1; j++) {
+	  if (arr[j] > arr[j + 1])
+		swap(&arr[j], &arr[j + 1]);
+	  operations++;
+	}
+  }
+  return operations;
+}
 
+int pickSort(int* arr, int len, void (*swap)()) {
+	int operations = 0;
+  for (int i = 0; i < len; i++) {
+	int flag = i;
+	operations++;
+	for (int j = i + 1; j < len; j++) {
+	  if (arr[j] < arr[flag])
+		flag = j;
+	  operations++;
+	}
+	swap(&arr[i], &arr[flag]);
+	operations++;
+  }
+  return operations;
+}
+
+void HW3_Task1(){
+	int Size= 20;
+ int arr[Size];
+ fillArray(arr,Size);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
