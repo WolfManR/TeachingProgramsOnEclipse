@@ -9,7 +9,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#define HWCount 2
+
+#define HWCount 3
 
 typedef struct{
 	char Theme[256];
@@ -20,17 +21,19 @@ void HWMenu();
 
 void HW1_main();
 void HW2_main();
+void HW3_main();
 
 int main(){
 	setvbuf(stdout, NULL, _IONBF, 0);
 	HW homeWorks[HWCount] ={
 		{.Theme = "Простые алгоритмы", .func = HW1_main},
-		{.Theme = "Асимптотическая сложность алгоритма. Рекурсия", .func = HW2_main}
+		{.Theme = "Асимптотическая сложность алгоритма. Рекурсия", .func = HW2_main},
+		{.Theme = "Поиск в массиве. Простые сортировки", .func = HW3_main}
 	};
 
 	HWMenu(homeWorks,HWCount);
 	int userInput=0;
-	printf("Введите номер ДЗ: ");
+	printf("Введите команду дз: ");
 	scanf("%d",&userInput);
 	puts("/////////////////////////////////////////////////////");
 	if(userInput >= 0 && userInput < HWCount)
@@ -43,7 +46,7 @@ int main(){
 
 void HWMenu(HW* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
-		printf("Номер ДЗ: %d\n  Тема: %s\n\n",i, (array+i)->Theme);
+		printf("КОМАНДА: %d		Номер ДЗ: %d\n  Тема: %s\n\n",i,i+1, (array+i)->Theme);
 	}
 	printf("Команда на выход: -1\n");
 }

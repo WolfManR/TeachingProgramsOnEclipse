@@ -11,7 +11,7 @@
 
 void TaskMenu(Task* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
-		printf("КОМАНДА: %d\n Номер задачи: %d\n Задание: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
+		printf("КОМАНДА: %d 		Номер задачи: %d\n Задание: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
 	}
 	printf("Команда на выход: -1\n");
 }
