@@ -5,7 +5,7 @@
  *      Author: wolfm
  *
  *
- *      Как правильно вынести?
+ *      It's correct?
  */
 typedef struct{
 	char ToDo[400];

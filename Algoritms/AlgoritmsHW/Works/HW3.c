@@ -19,17 +19,17 @@ void HW3_main(){
 	Task tasks[TCount] = {
 				{
 						.Number = 1,
-						.ToDo = "Попробовать оптимизировать пузырьковую сортировку. \nСравнить количество операций сравнения оптимизированной и не оптимизированной программы. \nНаписать функции сортировки, которые возвращают количество операций.",
+						.ToDo = "Try optimize Bubble Sort. \nCompare the number of comparing operations between the optimized and non-optimized programs. \nWrite sorting functions that return the number of operations.",
 						.func = HW3_Task1
 				},
 				{
 						.Number = 2,
-						.ToDo = "Реализовать шейкерную сортировку.",
+						.ToDo = "Implement shaker sorting.",
 						.func = HW3_Task2
 				},
 				{
 						.Number = 3,
-						.ToDo = "Погуглить как осуществляется Pigeon Hole Sort и попробовать реализовать на языке С.",
+						.ToDo = "Google how Pigeon Hole Sort is done and try to implement it in C.",
 						.func = HW3_Task3
 				}
 		};
@@ -37,7 +37,7 @@ void HW3_main(){
 	TaskMenu(tasks,TCount);
 
 	int userInput=0;
-	printf("Введите команду задачи: ");
+	printf("Enter the task command: ");
 	scanf("%d",&userInput);
 
 	PlayTask(userInput, TCount, tasks);
@@ -46,14 +46,15 @@ void HW3_main(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  1.
- *  Попробовать оптимизировать пузырьковую сортировку.
- *  Сравнить количество операций сравнения оптимизированной и не оптимизированной программы.
- *  Написать функции сортировки, которые возвращают количество операций.
+ *  Try optimize Bubble Sort.
+ *  Compare the number of comparing operations between the optimized and non-optimized programs.
+ *  Write sorting functions that return the number of operations.
 */
 int bubbleSort(int* arr, int len, void (*swap)()) {
 	int operations = 0;
 
 	for (int i = 0; i < len; i++) {
+		operations++;
 		for (int j = 0; j < len - 1; j++) {
 			operations++;
 			if (arr[j] > arr[j + 1]){
@@ -91,7 +92,7 @@ int pickSort(int* arr, int len, void (*swap)()) {
 	int operations = 0;
 
 	for (int i = 0; i < len; i++) {
-		operations++;
+		operations+=2;
 		int flag = i;
 		for (int j = i + 1; j < len; j++) {
 			operations++;
@@ -112,7 +113,7 @@ int insertSort(int* arr, int len, void (*swap)()){
 	
 	for (int i = 0; i < len; i++)
 	    {
-			operations+=2;
+			operations+=3;
 	        int temp = arr[i];
 	        int j = i;
 	        while (j > 0 && arr[j - 1] > temp)
@@ -131,26 +132,26 @@ int cocktailSort(int* arr, int len, void (*swap)() );
 void HW3_Task1(){
 	int Size= 20;
 	int arr[Size];
-	printf("Колличество операций разными сортировками\n");
+	printf("Number of operations in different sorts\n");
 	fillArray(arr,Size);
-	printf("\n%d	Пузырьковая сортировка(базовая)",bubbleSort(arr, Size, swap));
+	printf("\n%d	Bubble Sort (Basic)",bubbleSort(arr, Size, swap));
 
 	fillArray(arr,Size);
-	printf("\n%d	Пузырьковая сортировка(оптимизированная)",bubbleSort2(arr, Size, swap));
+	printf("\n%d	Bubble Sort (Optimized)",bubbleSort2(arr, Size, swap));
 
 	fillArray(arr,Size);
-	printf("\n%d	Сортировка выборкой", pickSort(arr, Size, swap));
+	printf("\n%d	Sort by selection", pickSort(arr, Size, swap));
 
 	fillArray(arr,Size);
-	printf("\n%d	Сортировка вставкой", insertSort(arr, Size, swap));
+	printf("\n%d	Insert Sort", insertSort(arr, Size, swap));
 
 	fillArray(arr,Size);
-	printf("\n%d	Шейкерная сортировка", cocktailSort(arr, Size, swap));
+	printf("\n%d	Cocktail Sort", cocktailSort(arr, Size, swap));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  2.
- *  Реализовать шейкерную сортировку.
+ *  Implement shaker sorting.
 */
 int cocktailSort(int* arr, int len, void (*swap)() ){
 	int operations = 0;
@@ -203,7 +204,7 @@ void HW3_Task2(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  3. optional.
- *  Погуглить как осуществляется Pigeon Hole Sort и попробовать реализовать на языке С.
+ *  Google how Pigeon Hole Sort is done and try to implement it in C.
 */
 void HW3_Task3(){
 

@@ -13,18 +13,18 @@
 
 void TaskMenu(Task* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
-		printf("КОМАНДА: %d 		Номер задачи: %d\n Задание: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
+		printf("COMMAND: %d 		Task №: %d\n The task: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
 	}
-	printf("Команда на выход: -1\n");
+	printf("Exit command: -1\n");
 }
 
 void PlayTask(int input, int TCount, Task* tasks){
 	if(input >= 0 && input < TCount)
 				tasks[input].func();
 			else if(input == -1)
-				printf("До свидания!");
+				printf("Goodbye!");
 			else
-				printf("Что-то пошло не так\n");
+				printf("Something went wrong\n");
 }
 
 

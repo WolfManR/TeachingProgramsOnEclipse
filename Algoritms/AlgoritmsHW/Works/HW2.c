@@ -18,17 +18,17 @@ void HW2_main(){
 	Task tasks[TCount] = {
 				{
 						.Number = 1,
-						.ToDo = "Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.",
+						.ToDo = "Implement the function of translation from 10 systems to binary using recursion.",
 						.func = HW2_Task1
 				},
 				{
 						.Number = 2,
-						.ToDo = "Реализовать функцию возведения числа a в степень b:\n a. без рекурсии;\n b. рекурсивно;\n c. *рекурсивно, используя свойство чётности степени.",
+						.ToDo = "Implement the function of raising the number a to the power of b:\n a. no recursion;\n b. recursively;\n c. * recursively using the property of degree parity.",
 						.func = HW2_Task2
 				},
 				{
 						.Number = 3,
-						.ToDo = "Исполнитель Калькулятор преобразует целое число, записанное на экране. \nУ исполнителя две команды, каждой команде присвоен номер:\n 1.Прибавь 1 - увеличивает число на экране на 1 \n 2.Умножь на 2 - увеличивает число в 2 раза. \nСколько существует программ, которые число 3 преобразуют в число 20?\n а) с использованием массива;\n б) с использованием рекурсии.",
+						.ToDo = "Contractor Calculator converts an integer written on the screen. \nThe performer has two teams, each team is assigned a number:\n 1.Apply 1 - increases the number on the screen by 1 \n 2. Multiply by 2 - increases the number by 2 times. \nHow many programs exist that convert the number 3 to the number 20?\n a) using an array;\n b) using recursion.",
 						.func = HW2_Task3
 				}
 		};
@@ -45,7 +45,7 @@ void HW2_main(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  1.
- *  Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.
+ *  Implement the function of translation from 10 systems to binary using recursion.
 */
 void binary(int n, char* b) {
     if (n>0)					//if(n)
@@ -68,10 +68,10 @@ void HW2_Task1(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  2.
- *  Реализовать функцию возведения числа a в степень b:
- *   a. без рекурсии;
- *   b. рекурсивно;
- *   c. *рекурсивно, используя свойство чётности степени.
+ *  Implement the function of raising the number a to the power of b:
+ *   a. no recursion;
+ *   b. recursively;
+ *   c. * recursively using the property of degree parity.
 */
 long power(int a, int b)
 {
@@ -113,13 +113,13 @@ void HW2_Task2(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  3.
- *  Исполнитель Калькулятор преобразует целое число, записанное на экране.
- *  У исполнителя две команды, каждой команде присвоен номер:
- *    1. Прибавь 1 - увеличивает число на экране на 1
- *    2. Умножь на 2 - увеличивает число в 2 раза
- *  Сколько существует программ, которые число 3 преобразуют в число 20?
- *    а) с использованием массива;
- *    б) с использованием рекурсии.
+ *  Contractor Calculator converts an integer written on the screen.
+ *  The performer has two teams, each team is assigned a number:
+ *    1.Apply 1 - increases the number on the screen by 1
+ *    2. Multiply by 2 - increases the number by 2 times.
+ *  How many programs exist that convert the number 3 to the number 20?
+ *    a) using an array;
+ *    b) using recursion.
 */
 
 void ways(int number, int max, int* result){
