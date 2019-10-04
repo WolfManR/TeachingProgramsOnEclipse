@@ -155,30 +155,37 @@ void HW3_Task1(){
 int cocktailSort(int* arr, int len, void (*swap)() ){
 	int operations = 0;
 
-	for (int i = 0; i < len-1; ++i) {					// ÎØÈÁÊÀ
-		operations+=3;
-		int j,k = 0;
-		if(i%2){
-			for (j = k; j < len-(i+1); ++j) {
-				operations++;
-				if (arr[j] > arr[j + 1]){
-					operations++;
-					swap(&arr[j], &arr[j + 1]);
-				}
-			}
-		}
-		else{
-			for (k = j-1; k > i; --k) {
-				operations++;
-				if (arr[k] > arr[k - 1]){
-					operations++;
-					swap(&arr[k], &arr[k - 1]);
-				}
-			}
-		}
-	}
+	operations+=4;
+	int j=0;
+	int k = 0;
+	int min=0;
+	int max=len-1;
+    for (int i = 0; i < len-1; ++i) {
+        operations++;
 
-	return operations;
+        if(i%2){
+        	for (k = max; k > min; --k) {
+        		operations++;
+                if (arr[k] < arr[k - 1]){
+                	operations++;
+                    swap(&arr[k], &arr[k - 1]);
+                }
+        	}
+        	min=k+1;
+        }
+        else{
+        	for (j = min; j < max; ++j) {
+        		operations++;
+        		if (arr[j] > arr[j + 1]){
+        			operations++;
+        			swap(&arr[j], &arr[j + 1]);
+        		}
+        	}
+        	max=j-1;
+        }
+    }
+
+    return operations;
 }
 
 void HW3_Task2(){
