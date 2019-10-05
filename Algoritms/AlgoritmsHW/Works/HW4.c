@@ -7,6 +7,7 @@
 
 #include "Works.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #define TCount 2
 
@@ -35,8 +36,52 @@ void HW4_main(){
  *  1.
  *  * Number of routes with obstacles. Implement reading an array with an obstacle and finding the number of routes.
 */
-void HW4_Task1(){
 
+#define wall 1
+
+int routes(int x, int y) {
+  if (x == 0 || y == 0) return 1;
+  else return routes(x - 1, y) + routes(x, y - 1);
+}
+
+void HW4_Task1(){
+	printf("Setup Size of checkboard");
+	int* field;
+	int rows;
+	printf("\nEnters rows: ");
+	scanf("%d",&rows);
+	int cols;
+	printf("\nEnters columns: ");
+	scanf("%d",&cols);
+	field=malloc(rows*cols*sizeof(*field));
+	printf("Enter a number of blocks");
+	int blockNums;
+	scanf("%d",&blockNums);
+	printf("Enter blocks of path (x is col, y is row)");
+	for (int block = 0; block < blockNums; ++block) {
+		int x;
+		int y;
+		printf("Enter x: ");
+		scanf("%d",&x);
+		printf("Enter y: ");
+		scanf("%d",&y);
+		*(field+(y*cols+x-1))=wall;
+	}
+	for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				printf("%7d ", *(field+(i*cols+j)));
+			}
+			printf("\n");
+		}
+	puts("");
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 7; j++) {
+			printf("%7d ", routes(i, j));
+		}
+		printf("\n");
+	}
+
+	free(field);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
