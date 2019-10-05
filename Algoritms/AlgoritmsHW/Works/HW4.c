@@ -47,26 +47,33 @@ int routes(int x, int y) {
 void HW4_Task1(){
 	printf("Setup Size of checkboard");
 	int* field;
-	int rows;
-	printf("\nEnters rows: ");
-	scanf("%d",&rows);
 	int cols;
-	printf("\nEnters columns: ");
+	printf("Enters Columns: ");
 	scanf("%d",&cols);
+	int rows;
+	printf("\nEnters Rows: ");
+	scanf("%d",&rows);
 	field=malloc(rows*cols*sizeof(*field));
-	printf("Enter a number of blocks");
+
+	for (int var = 0; var < rows*cols; ++var) {
+		*(field+var)=0;
+	}
+
+	printf("Enter a number of blocks: ");
 	int blockNums;
 	scanf("%d",&blockNums);
 	printf("Enter blocks of path (x is col, y is row)");
+
 	for (int block = 0; block < blockNums; ++block) {
 		int x;
 		int y;
-		printf("Enter x: ");
+		printf("\nEnter x: ");
 		scanf("%d",&x);
 		printf("Enter y: ");
 		scanf("%d",&y);
-		*(field+(y*cols+x-1))=wall;
+		*(field+((y-1)*cols+x-1))=wall;
 	}
+
 	for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				printf("%7d ", *(field+(i*cols+j)));
