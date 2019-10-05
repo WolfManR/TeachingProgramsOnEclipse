@@ -48,11 +48,9 @@ int bubbleSort(int* arr, int len, void (*swap)()) {
 	int operations = 0;
 
 	for (int i = 0; i < len; i++) {
-		operations++;
 		for (int j = 0; j < len - 1; j++) {
 			operations++;
 			if (arr[j] > arr[j + 1]){
-				operations++;
 				swap(&arr[j], &arr[j + 1]);
 			}
 		}
@@ -65,12 +63,10 @@ int bubbleSort2(int* arr, int len, void (*swap)()) {
 	int operations = 0;
 
 	for (int i = 0; i < len; i++) {
-		operations++;
 		int changed = 0;
 		for (int j = 0; j < len - 1; j++) {
 			operations++;
 			if (arr[j] > arr[j + 1]){
-				operations+=2;
 				swap(&arr[j], &arr[j + 1]);
 				changed = 1;
 			}
@@ -86,17 +82,14 @@ int pickSort(int* arr, int len, void (*swap)()) {
 	int operations = 0;
 
 	for (int i = 0; i < len; i++) {
-		operations+=2;
 		int flag = i;
 		for (int j = i + 1; j < len; j++) {
 			operations++;
 			if (arr[j] < arr[flag]){
-				operations++;
 				flag = j;
 			}
 		}
 		swap(&arr[i], &arr[flag]);
-		operations++;
 	}
 
   return operations;
@@ -107,12 +100,11 @@ int insertSort(int* arr, int len, void (*swap)()){
 	
 	for (int i = 0; i < len; i++)
 	    {
-			operations+=3;
 	        int temp = arr[i];
 	        int j = i;
 	        while (j > 0 && arr[j - 1] > temp)
 	        {            
-	        	operations+=2;
+	        	operations++;
 	            swap(&arr[j], &arr[j - 1]);
 	            j--;
 	        }
@@ -125,22 +117,29 @@ int cocktailSort(int* arr, int len, void (*swap)() );
 
 void HW3_Task1(){
 	int Size= 20;
-	int arr[Size];
+	int arr1[Size];
+	int arr2[Size];
+	int arr3[Size];
+	int arr4[Size];
+	int arr5[Size];
+
+	fillArray(arr1,Size);
+	copyArray(arr1,arr2,Size);
+	copyArray(arr1,arr3,Size);
+	copyArray(arr1,arr4,Size);
+	copyArray(arr1,arr5,Size);
+
 	printf("Number of operations in different sorts\n");
-	fillArray(arr,Size);
-	printf("\n%d	Bubble Sort (Basic)",bubbleSort(arr, Size, swap));
 
-	fillArray(arr,Size);
-	printf("\n%d	Bubble Sort (Optimized)",bubbleSort2(arr, Size, swap));
+	printf("\n%d	Bubble Sort (Basic)",bubbleSort(arr1, Size, swap));
 
-	fillArray(arr,Size);
-	printf("\n%d	Sort by selection", pickSort(arr, Size, swap));
+	printf("\n%d	Bubble Sort (Optimized)",bubbleSort2(arr2, Size, swap));
 
-	fillArray(arr,Size);
-	printf("\n%d	Insert Sort", insertSort(arr, Size, swap));
+	printf("\n%d	Sort by selection", pickSort(arr3, Size, swap));
 
-	fillArray(arr,Size);
-	printf("\n%d	Cocktail Sort", cocktailSort(arr, Size, swap));
+	printf("\n%d	Insert Sort", insertSort(arr4, Size, swap));
+
+	printf("\n%d	Cocktail Sort", cocktailSort(arr5, Size, swap));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -150,19 +149,16 @@ void HW3_Task1(){
 int cocktailSort(int* arr, int len, void (*swap)() ){
 	int operations = 0;
 
-	operations+=4;
 	int j=0;
 	int k = 0;
 	int min=0;
 	int max=len-1;
     for (int i = 0; i < len-1; ++i) {
-        operations++;
 
         if(i%2){
         	for (k = max; k > min; --k) {
         		operations++;
                 if (arr[k] < arr[k - 1]){
-                	operations++;
                     swap(&arr[k], &arr[k - 1]);
                 }
         	}
@@ -172,7 +168,6 @@ int cocktailSort(int* arr, int len, void (*swap)() ){
         	for (j = min; j < max; ++j) {
         		operations++;
         		if (arr[j] > arr[j + 1]){
-        			operations++;
         			swap(&arr[j], &arr[j + 1]);
         		}
         	}
@@ -199,6 +194,46 @@ void HW3_Task2(){
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  3. optional.
  *  Google how Pigeon Hole Sort is done and try to implement it in C.
+*/
+int getMax(int* arr, int size) {
+   if (size == 1) return arr[0];
+   int r = arr[0];
+   int i;
+	for (i = 1; i < size; i++)
+       if (r < arr[i])
+           r = arr[i];
+   return r;
+}
+
+int getMin(int* arr, int size) {
+   if (size == 1) return arr[0];
+   int r = arr[0];
+   int i;
+   for (i = 1; i < size; i++)
+       if (r > arr[i])
+           r = arr[i];
+   return r;
+}
+/*
+int pigeon(int* arr, int size) {
+   int steps = 0;
+   int min = getMin(arr, size);
+   int max = getMax(arr, size);
+   int length = max - min + 1;
+   int freq[length] = {0};				//ошибка
+   for (int i = 0; i < size; i++) {
+   		steps++;
+       freq[arr[i] - min]++;
+   }
+
+   int arrIndex = 0;
+   for (int i = 0; i < length; i++)
+       for (int elems = freq[i]; elems > 0; elems--) {
+       		steps++;
+           arr[arrIndex++] = i + min;
+       }
+   return steps;
+}
 */
 void HW3_Task3(){
 

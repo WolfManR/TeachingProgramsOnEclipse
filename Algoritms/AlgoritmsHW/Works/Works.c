@@ -51,6 +51,12 @@ void printArray(int* arr, int len) {
   printf("\n");
 }
 
+void copyArray(int* arrFrom, int* arrTo, int len) {
+	int i;
+	for (i = 0; i < len; i++)
+		arrTo[i] = arrFrom[i];
+}
+
 void swap(int *a, int *b) {
   int t = *a;
   *a = *b;
