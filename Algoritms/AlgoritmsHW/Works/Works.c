@@ -16,15 +16,21 @@ void TaskMenu(Task* array, int arrLength){
 		printf("COMMAND: %d 		Task ¹: %d\n The task: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
 	}
 	printf("Exit command: -1\n");
+
+	int userInput=0;
+	printf("Enter the task command: ");
+	scanf("%d",&userInput);
+
+	PlayTask(userInput, arrLength, array);
 }
 
 void PlayTask(int input, int TCount, Task* tasks){
 	if(input >= 0 && input < TCount)
-				tasks[input].func();
-			else if(input == -1)
-				printf("Goodbye!");
-			else
-				printf("Something went wrong\n");
+		tasks[input].func();
+	else if(input == -1)
+		printf("Goodbye!");
+	else
+		printf("Something went wrong\n");
 }
 
 

@@ -34,12 +34,6 @@ void HW2_main(){
 		};
 
 	TaskMenu(tasks,TCount);
-
-	int userInput=0;
-	printf("Введите команду задачи: ");
-	scanf("%d",&userInput);
-
-	PlayTask(userInput, TCount, tasks);
 }
 
 
@@ -58,7 +52,7 @@ void binary(int n, char* b) {
 
 void HW2_Task1(){
 	int input;
-	printf("Введите число десятичной системы счисления:\n");
+	printf("Enter the number of decimal number system:\n");
 	scanf("%d",&input);
 
 	char out[64]="";
@@ -101,14 +95,14 @@ long quickPow(long n,int a, int b) {
 void HW2_Task2(){
 	int a,b;
 
-	printf("Введите число ");
+	printf("Insert the number ");
 	scanf("%d",&a);
-	printf("Введите положительное значение степени ");
+	printf("Enter a positive degree value ");
 	scanf("%d",&b);
 
-	printf("без рекурсии %li",power(a,b));
-	printf("\n\nс рекурсией %li",power2(a,b));
-	printf("\n\nускоренное возведение в степень %li",quickPow(1,a,b));
+	printf("no recursion %li",power(a,b));
+	printf("\n\nwith recursion %li",power2(a,b));
+	printf("\n\naccelerated exponentiation %li",quickPow(1,a,b));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -129,7 +123,7 @@ void ways(int number, int max, int* result){
 		ways(number*2, max, result);
 	}
 }
-/// Позже разобраться почему верхнее считает неправильно и доделать дз
+/// Later to figure out why the upper one considers it wrong and finish the HW
 int calc(int from, int to) {
 	if (from < to)
 		return calc(from + 1, to) + calc(from * 2, to);
@@ -147,6 +141,6 @@ void HW2_Task3(){
 
 
 	ways(num, max, &programs);
-	printf("Колличество программ: %d", programs);
-	printf("\nКолличество программ: %d", calc(num,max));
+	printf("Number of programs: %d", programs);
+	printf("\nNumber of programs: %d", calc(num,max));
 }

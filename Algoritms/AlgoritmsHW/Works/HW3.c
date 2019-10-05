@@ -35,12 +35,6 @@ void HW3_main(){
 		};
 
 	TaskMenu(tasks,TCount);
-
-	int userInput=0;
-	printf("Enter the task command: ");
-	scanf("%d",&userInput);
-
-	PlayTask(userInput, TCount, tasks);
 }
 
 
