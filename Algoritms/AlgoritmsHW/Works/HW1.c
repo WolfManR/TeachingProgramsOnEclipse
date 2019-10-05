@@ -23,62 +23,56 @@ void HW1_main(){
 	Task tasks[TCount] = {
 			{
 					.Number = 1,
-					.ToDo = "Ввести вес и рост человека. Рассчитать и вывести индекс массы тела по формуле I=m/(h*h);\n где m-масса тела в килограммах, h - рост в метрах.",
+					.ToDo = "Enter the weight and height of the person. Calculate and derive a body mass index by the formula I=m/(h*h);\n where m is the body weight in kilograms, h is the height in meters.",
 					.func = HW1_Task1
 			},
 			{
 					.Number = 3,
-					.ToDo = "Написать программу обмена значениями двух целочисленных переменных:\n	b. *без использования третьей переменной.",
+					.ToDo = "Write a program for exchanging the values of two integer variables:\n	b. * without using a third variable.",
 					.func = HW1_Task3
 			},
 			{
 					.Number = 4,
-					.ToDo = "Написать программу нахождения корней заданного квадратного уравнения.",
+					.ToDo = "Write a program for finding the roots of a given quadratic equation.",
 					.func = HW1_Task4
 			},
 			{
 					.Number = 6,
-					.ToDo = "Ввести возраст человека (от 1 до 150 лет) и вывести его вместе с последующим словом «год», «года» или «лет».",
+					.ToDo = "Enter the person’s age (from 1 to 150 years) and display it with the next word “year”, “year” or “years”.",
 					.func = HW1_Task6
 			},
 			{
 					.Number = 7,
-					.ToDo = "Имеются числовые координаты двух полей шахматной доски (x1,y1,x2,y2). \nТребуется определить, относятся ли к поля к одному цвету или нет.",
+					.ToDo = "There are numerical coordinates of two checkerboard fields (x1, y1, x2, y2). \nIt is required to determine whether the fields belong to the same color or not.",
 					.func = HW1_Task7
 			},
 			{
 					.Number = 9,
-					.ToDo = "Даны целые положительные числа N и K. Используя только операции сложения и вычитания, \nнайти частное от деления нацело N на K, а также остаток от этого деления.",
+					.ToDo = "Given positive integers N and K. Using only the addition and subtraction operations, \nfind the quotient of the division of N entirely by K, as well as the remainder of this division.",
 					.func = HW1_Task9
 			},
 			{
 					.Number = 10,
-					.ToDo = "Дано целое число N (> 0). С помощью операций деления нацело и взятия остатка от деления определить,\n имеются ли в записи числа N нечетные цифры.\n	Если имеются, то вывести True, если нет — вывести False.",
+					.ToDo = "Given an integer N (> 0). Using whole division operations and taking the remainder of the division, determine\n if there are odd digits in the record of N.\n If yes, print True; if not, print False.",
 					.func = HW1_Task10
 			},
 			{
 					.Number = 14,
-					.ToDo = "* Автоморфные числа.  Натуральное число называется автоморфным, если оно равно последним цифрам своего квадрата.  Например, 25^2 = 625.\n Напишите программу, которая выводит на экран все автоморфные числа, в пределах 1_000_000",
+					.ToDo = "* Automorphic numbers. A natural number is called automorphic if it is equal to the last digits of its square. For example, 25 ^ 2 = 625.\n Write a program that displays all automorphic numbers, within 1_000_000 ",
 					.func = HW1_Task14
 			}
 	};
 
 	TaskMenu(tasks,TCount);
-
-	int userInput=0;
-	printf("Введите команду задачи: ");
-	scanf("%d",&userInput);
-
-	PlayTask(userInput, TCount, tasks);
 }
 
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  1.
- *  Ввести вес и рост человека.
- *  Рассчитать и вывести индекс массы тела по формуле I=m/(h*h);
- *   где m-масса тела в килограммах,
- *   h - рост в метрах.
+ *  Enter the weight and height of the person.
+ *  Calculate and derive a body mass index according to the formula I = m / (h * h);
+ *   where m is the body weight in kilograms,
+ *   h - growth in meters.
 */
 void HW1_Task1(){
 	double weight,height;
@@ -93,18 +87,18 @@ void HW1_Task1(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  3.
- *  Написать программу обмена значениями двух целочисленных переменных:
- *   b. *без использования третьей переменной.
+ *  Write a program for exchanging the values of two integer variables:
+ *   b. * without using a third variable.
 */
 
-// функция обмена значениями с использованием третьей переменной
+// value exchange function using the third variable
 void swapWithThird(int* first, int* second) {
 	int temp = *first;
 	*first = *second;
 	*second = temp;
 }
 
-// функция обмена значениями без использования третьей переменной
+// value exchange function without using a third variable
 void swapNotWithThird(int* first, int* second) {
 	*first ^= *second;
 	*second ^= *first;
@@ -114,22 +108,22 @@ void swapNotWithThird(int* first, int* second) {
 void HW1_Task3() {
 	int x,y;
 
-	printf("Введите значение первой переменной: ");
+	printf("Enter the value of the first variable: ");
 	scanf("%d",&x);
-	printf("Введите значение второй переменной: ");
+	printf("Enter the value of the second variable: ");
 	scanf("%d",&y);
 
 	int select;
-	printf("Выберите способ перестановки:\n1 - с использованием третьей переменной\n2 - без использования третьей переменной\n");
+	printf("Choose a permutation method:\n1 - using the third variable\n2 - without using a third variable\n");
 	scanf("%d",&select);
 	switch(select){
 	case 1:
 		swapWithThird(&x, &y);
-		printf("перестановка с использованием третьей переменной:\n x:%d , y:%d\n\n", x, y);
+		printf("permutation using the third variable:\n x:%d , y:%d\n\n", x, y);
 		break;
 	case 2:
 		swapNotWithThird(&x, &y);
-		printf("перестановка без использования третьей переменной:\n x:%d , y:%d\n\n", x, y);
+		printf("permutation without using the third variable:\n x:%d , y:%d\n\n", x, y);
 		break;
 	default:
 		printf("Something go wrong");
@@ -139,7 +133,7 @@ void HW1_Task3() {
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  4.
- *  Написать программу нахождения корней заданного квадратного уравнения.
+ *  Write a program for finding the roots of a given quadratic equation.
 */
 int calculateSquareEquation(int a, int b, int c, float* x1, float* x2) {
 	double D = b * b - 4 * a * c;
@@ -167,12 +161,12 @@ void HW1_Task4(){
 	int a, b, c;
 	float x1, x2;
 
-	printf("Введите числа квадратного уравнения ax^2+bx+c=0\n");
-	printf("\nВведите \'a\': ");
+	printf("Enter the numbers of the quadratic equation ax^2+bx+c=0\n");
+	printf("\nEnter \'a\': ");
 	scanf("%d",&a);
-	printf("\nВведите \'b\': ");
+	printf("\nEnter \'b\': ");
 	scanf("%d",&b);
-	printf("\nВведите \'c\': ");
+	printf("\nEnter \'c\': ");
 	scanf("%d",&c);
 
 	if (a == 0) printf("x = %f",(float)(-c/b));
@@ -196,7 +190,7 @@ void HW1_Task4(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  6.
- *  Ввести возраст человека (от 1 до 150 лет) и вывести его вместе с последующим словом «год», «года» или «лет».
+ *  Enter the person’s age (from 1 to 150 years) and display it with the next word “год”, “года” or “лет”.
 */
 char* ageAdder(int age) {
     if (age % 10 == 1 && (age % 100 != 11))
@@ -212,21 +206,21 @@ void HW1_Task6(){
 	int inputAge = 0;
 
 	do{
-		printf("Введите возраст человека от 1 до 150 лет: ");
+		printf("Enter the person's age from 1 to 150 years: ");
 		scanf("%d",&inputAge);
 	}while(inputAge < 1 || inputAge > 150);
 
-	printf("Возраст: %d %s",inputAge, ageAdder(inputAge));
+	printf("Age: %d %s",inputAge, ageAdder(inputAge));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  7.
- *  Имеются числовые координаты двух полей шахматной доски (x1,y1,x2,y2).
- *  Требуется определить, относятся ли к поля к одному цвету или нет.
+ *  There are numerical coordinates of two checkerboard fields (x1, y1, x2, y2).
+ *  It is required to determine whether the fields belong to the same color or not.
 */
 int isInDescRange(int coordinate){
 	if(coordinate < 1 || coordinate > 8){
-		printf("Вы ввели неверное значение");
+		printf("You entered an invalid value");
 		return 1;
 	}
 	else return 0;
@@ -237,20 +231,20 @@ void HW1_Task7(){
 	int flag = 0;
 
 	do {
-		printf("Введите координаты двух полей на шахматной доске, размерами 8*8\n");
-		printf("Первое поле по оси x: ");
+		printf("Enter the coordinates of the two fields on the chessboard, in size 8*8\n");
+		printf("The first field along the axis x: ");
 		scanf("%d",&x1);
 		if(isInDescRange(x1)) continue;
 
-		printf("Первое поле по оси y: ");
+		printf("The first field along the axis y: ");
 		scanf("%d",&y1);
 		if(isInDescRange(y1)) continue;
 
-		printf("Второе поле по оси x: ");
+		printf("The second field along the axis x: ");
 		scanf("%d",&x2);
 		if(isInDescRange(x2)) continue;
 
-		printf("Второе поле по оси y: ");
+		printf("The second field along the axis y: ");
 		scanf("%d",&y2);
 		if(isInDescRange(y2)) continue;
 		flag = 1;
@@ -263,19 +257,19 @@ void HW1_Task7(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  9.
- *  Даны целые положительные числа N и K.
- *  Используя только операции сложения и вычитания, найти частное от деления нацело N на K,
- *  а также остаток от этого деления.
+ *  Given positive integers N and K.
+ *  Using only the addition and subtraction operations, find the quotient of dividing N completely by K,
+ *  as well as the remainder of this division.
 */
 void HW1_Task9(){
 	int n,k;
 
-	printf("делимое число: ");
+	printf("dividend: ");
 	scanf("%d",&n);
 	do{
-		printf("делитель: ");
+		printf("divider: ");
 		scanf("%d",&k);
-		if(k==0)printf("нельзя делить на 0\n");
+		if(k==0)printf("cannot be divided by 0\n");
 	}while(k==0);
 
 	int result=0;
@@ -283,21 +277,21 @@ void HW1_Task9(){
 		n-=k;
 		result++;
 	}
-	printf("Частное: %d\nОстаток от деления: %d", result, n);
+	printf("Quotient: %d\nRemainder of the division: %d", result, n);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  * 10.
- * Дано целое число N (> 0).
- * С помощью операций деления нацело и взятия остатка от деления определить,
- * имеются ли в записи числа N нечетные цифры.
- *  Если имеются, то вывести True,
- *  если нет — вывести False.
+ * Given an integer N (> 0).
+ * Using the operations of division completely and taking the remainder of the division to determine,
+ * are there odd digits in the record of number N.
+ *  If available, print True,
+ *  if not, print False.
 */
 void HW1_Task10(){
 	int n=0;
 
-	printf("Введите целое число больше нуля: ");
+	printf("Enter an integer greater than zero: ");
 	scanf("%d", &n);
 
 	int flag = 0;
@@ -313,9 +307,9 @@ void HW1_Task10(){
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
- * 14.  * Автоморфные числа.
- * 		Натуральное число называется автоморфным, если оно равно последним цифрам своего квадрата. Например, 25^2 = 625.
- * Напишите программу, которая выводит на экран все автоморфные числа, в пределах 1_000_000
+ * 14.  * Automorphic numbers.
+ * 		A natural number is called automorphic if it is equal to the last digits of its square. For example, 25 ^ 2 = 625.
+ * Write a program that displays all automorphic numbers, within 1_000_000
 */
 void HW1_Task14(){
 	const int max = 1000000;

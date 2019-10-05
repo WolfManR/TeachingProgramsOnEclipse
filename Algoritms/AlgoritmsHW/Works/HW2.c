@@ -18,34 +18,28 @@ void HW2_main(){
 	Task tasks[TCount] = {
 				{
 						.Number = 1,
-						.ToDo = "Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.",
+						.ToDo = "Implement the function of translation from 10 systems to binary using recursion.",
 						.func = HW2_Task1
 				},
 				{
 						.Number = 2,
-						.ToDo = "Реализовать функцию возведения числа a в степень b:\n a. без рекурсии;\n b. рекурсивно;\n c. *рекурсивно, используя свойство чётности степени.",
+						.ToDo = "Implement the function of raising the number a to the power of b:\n a. no recursion;\n b. recursively;\n c. * recursively using the property of degree parity.",
 						.func = HW2_Task2
 				},
 				{
 						.Number = 3,
-						.ToDo = "Исполнитель Калькулятор преобразует целое число, записанное на экране. \nУ исполнителя две команды, каждой команде присвоен номер:\n 1.Прибавь 1 - увеличивает число на экране на 1 \n 2.Умножь на 2 - увеличивает число в 2 раза. \nСколько существует программ, которые число 3 преобразуют в число 20?\n а) с использованием массива;\n б) с использованием рекурсии.",
+						.ToDo = "Contractor Calculator converts an integer written on the screen. \nThe performer has two teams, each team is assigned a number:\n 1.Apply 1 - increases the number on the screen by 1 \n 2. Multiply by 2 - increases the number by 2 times. \nHow many programs exist that convert the number 3 to the number 20?\n a) using an array;\n b) using recursion.",
 						.func = HW2_Task3
 				}
 		};
 
 	TaskMenu(tasks,TCount);
-
-	int userInput=0;
-	printf("Введите команду задачи: ");
-	scanf("%d",&userInput);
-
-	PlayTask(userInput, TCount, tasks);
 }
 
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  1.
- *  Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.
+ *  Implement the function of translation from 10 systems to binary using recursion.
 */
 void binary(int n, char* b) {
     if (n>0)					//if(n)
@@ -58,7 +52,7 @@ void binary(int n, char* b) {
 
 void HW2_Task1(){
 	int input;
-	printf("Введите число десятичной системы счисления:\n");
+	printf("Enter the number of decimal number system:\n");
 	scanf("%d",&input);
 
 	char out[64]="";
@@ -68,10 +62,10 @@ void HW2_Task1(){
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  2.
- *  Реализовать функцию возведения числа a в степень b:
- *   a. без рекурсии;
- *   b. рекурсивно;
- *   c. *рекурсивно, используя свойство чётности степени.
+ *  Implement the function of raising the number a to the power of b:
+ *   a. no recursion;
+ *   b. recursively;
+ *   c. * recursively using the property of degree parity.
 */
 long power(int a, int b)
 {
@@ -101,25 +95,25 @@ long quickPow(long n,int a, int b) {
 void HW2_Task2(){
 	int a,b;
 
-	printf("Введите число ");
+	printf("Insert the number ");
 	scanf("%d",&a);
-	printf("Введите положительное значение степени ");
+	printf("Enter a positive degree value ");
 	scanf("%d",&b);
 
-	printf("без рекурсии %li",power(a,b));
-	printf("\n\nс рекурсией %li",power2(a,b));
-	printf("\n\nускоренное возведение в степень %li",quickPow(1,a,b));
+	printf("no recursion %li",power(a,b));
+	printf("\n\nwith recursion %li",power2(a,b));
+	printf("\n\naccelerated exponentiation %li",quickPow(1,a,b));
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  *  3.
- *  Исполнитель Калькулятор преобразует целое число, записанное на экране.
- *  У исполнителя две команды, каждой команде присвоен номер:
- *    1. Прибавь 1 - увеличивает число на экране на 1
- *    2. Умножь на 2 - увеличивает число в 2 раза
- *  Сколько существует программ, которые число 3 преобразуют в число 20?
- *    а) с использованием массива;
- *    б) с использованием рекурсии.
+ *  Contractor Calculator converts an integer written on the screen.
+ *  The performer has two teams, each team is assigned a number:
+ *    1.Apply 1 - increases the number on the screen by 1
+ *    2. Multiply by 2 - increases the number by 2 times.
+ *  How many programs exist that convert the number 3 to the number 20?
+ *    a) using an array;
+ *    b) using recursion.
 */
 
 void ways(int number, int max, int* result){
@@ -129,7 +123,7 @@ void ways(int number, int max, int* result){
 		ways(number*2, max, result);
 	}
 }
-/// Позже разобраться почему верхнее считает неправильно и доделать дз
+/// Later to figure out why the upper one considers it wrong and finish the HW
 int calc(int from, int to) {
 	if (from < to)
 		return calc(from + 1, to) + calc(from * 2, to);
@@ -147,6 +141,6 @@ void HW2_Task3(){
 
 
 	ways(num, max, &programs);
-	printf("Колличество программ: %d", programs);
-	printf("\nКолличество программ: %d", calc(num,max));
+	printf("Number of programs: %d", programs);
+	printf("\nNumber of programs: %d", calc(num,max));
 }

@@ -26,28 +26,28 @@ void HW3_main();
 int main(){
 	setvbuf(stdout, NULL, _IONBF, 0);
 	HW homeWorks[HWCount] ={
-		{.Theme = "Простые алгоритмы", .func = HW1_main},
-		{.Theme = "Асимптотическая сложность алгоритма. Рекурсия", .func = HW2_main},
-		{.Theme = "Поиск в массиве. Простые сортировки", .func = HW3_main}
+		{.Theme = "Simple algorithms", .func = HW1_main},
+		{.Theme = "Asymptotic complexity of the algorithm. Recursion", .func = HW2_main},
+		{.Theme = "Search in an array. Simple sorting", .func = HW3_main}
 	};
 
 	HWMenu(homeWorks,HWCount);
 	int userInput=0;
-	printf("Введите команду дз: ");
+	printf("Enter the HW command: ");
 	scanf("%d",&userInput);
 	puts("/////////////////////////////////////////////////////");
 	if(userInput >= 0 && userInput < HWCount)
 		homeWorks[userInput].func();
 	else if(userInput == -1)
-		printf("До свидания!");
+		printf("Goodbye!");
 	else
-		printf("Что-то пошло не так\n");
+		printf("Something went wrong\n");
 }
 
 void HWMenu(HW* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
-		printf("КОМАНДА: %d		Номер ДЗ: %d\n  Тема: %s\n\n",i,i+1, (array+i)->Theme);
+		printf("COMMAND: %d		HW Number: %d\n  Theme: %s\n\n",i,i+1, (array+i)->Theme);
 	}
-	printf("Команда на выход: -1\n");
+	printf("Exit command: -1\n");
 }
 
