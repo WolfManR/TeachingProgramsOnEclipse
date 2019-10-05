@@ -116,14 +116,6 @@ void HW2_Task2(){
  *    b) using recursion.
 */
 
-void ways(int number, int max, int* result){
-	if(number==max) (*result)++;
-	else if(number<max && (number+1<max || number*2<max)){
-		ways(number+1, max, result);
-		ways(number*2, max, result);
-	}
-}
-/// Later to figure out why the upper one considers it wrong and finish the HW
 int calc(int from, int to) {
 	if (from < to)
 		return calc(from + 1, to) + calc(from * 2, to);
@@ -137,10 +129,9 @@ void ways2(int number, int max, int* result, int* arr, int arrLength){
 }
 
 void HW2_Task3(){
-	int num = 3, max = 20, programs = 0;
+	int num = 3, max = 20;
 
 
-	ways(num, max, &programs);
-	printf("Number of programs: %d", programs);
+
 	printf("\nNumber of programs: %d", calc(num,max));
 }
