@@ -116,85 +116,90 @@ void HW4_Task1(){
  *  2.
  *  *** It is required to go around the horse with a NxM-sized chessboard, passing through all the board fields once.
 */
-#define QUEENS 8
 #define X 8
 #define Y 8
+#define H X*Y
 int board[Y][X];
+int operations = 0;
 
-void annull() {
-  int i;
-  int j;
-  for (i = 0; i < Y; i++) {
-	for (j = 0; j < X; j++) {
+void clearBoard() {
+  for (int i = 0; i < Y; i++) {
+	for (int j = 0; j < X; j++) {
 	  board[i][j] = 0;
 	}
   }
 }
-
 void printBoard() {
-  int i;
-  int j;
-  for (i = 0; i < Y; i++) {
-	for (j = 0; j < X; j++) {
+  for (int i = 0; i < Y; i++) {
+	for (int j = 0; j < X; j++) {
 	  printf("%3d", board[i][j]);
 	}
 	printf("\n");
   }
 }
 
-int checkQueen(int x, int y) {
-  int i;
-  int j;
-  for (i = 0; i < Y; i++) {
-	for (j = 0; j < X; j++) {
-	  if (board[i][j] != 0)
-		if (!(i == x && j == y)) {
-		  if (i - x == 0 || j - y == 0)
-			return 0;
-		  if (abs(i - x) == abs(j - y))
-			return 0;
+
+int doStep(int n,int y, int x);
+int testSolution(int n, int y, int x);
+
+int checkXY(int y, int x){
+	if(y<0 || y>=Y || x<0 || x>=X) return 0;
+	if(board[y][x] != 0) return 0;
+	return 1;
+}
+
+int doStep(int n,int y, int x){
+	operations++;
+	if(checkXY(y,x)) {
+		board[y][x] = n;
+		if(testSolution(n+1,y,x)) return 1;
+		board[y][x] = 0;
+	}
+	return 0;
+}
+
+int testSolution(int n, int y, int x) {
+	//printBoard();
+	//puts("");
+	if(n==H+1) return 1;
+	for (int i = 1,j = 2; i <= 2; i++, j--) {
+			int tempY = y - i;
+			int tempX = x - j;
+			if(doStep(n, tempY, tempX)) return 1;
+			tempX = x + j;
+			if(doStep(n, tempY, tempX)) return 1;
+
+			tempY = y + i;
+			tempX = x - j;
+			if(doStep(n, tempY, tempX)) return 1;
+			tempX = x + j;
+			if(doStep(n, tempY, tempX)) return 1;
+	}
+	return 0;
+}
+
+int testPosition(int startX, int startY){
+	int counter = 0;
+
+	for(int y = startY; y < Y; y++){
+		for (int x = startX; x < X; x++) {
+			operations++;
+			board[y][x]	= 1;
+			if(testSolution(1+1,y,x)) return 1;
+
+			printf("times = %d\n", ++counter);
+			printf("operations = %d\n", operations);
+			puts("");
+
+			board[y][x]	= 0;
 		}
 	}
-  }
-  return 1;
-}
-
-int checkBoard() {
-  int i;
-  int j;
-  for (i = 0; i < Y; i++) {
-	for (j = 0; j < X; j++) {
-	  if (board[i][j] != 0)
-		if (checkQueen(i, j) == 0)
-		  return 0;
-	}
-  }
-  return 1;
-}
-
-int operations = 0;
-int queens(int n) {
-  if (checkBoard() == 0) return 0;
-  if (n == QUEENS + 1) return 1;
-  int row;
-  int col;
-  for (row = 0; row < Y; row++) {
-	for (col = 0; col < X; col++) {
-	  operations++;
-	  if (board[row][col] == 0) {
-		board[row][col] = n;
-		if (queens(n + 1))
-		  return 1;
-		board[row][col] = 0;
-	  }
-	}
-  }
-  return 0;
+	return 0;
 }
 
 void HW4_Task2(){
-	annull();
-	queens(1);
+	clearBoard();
+	testPosition(0,0); // i try position 2,3, calculate long time but find solution on this position (operations = -1358925999)
 	printBoard();
 	printf("operations = %d\n", operations);
 }
