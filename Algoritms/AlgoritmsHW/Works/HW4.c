@@ -118,7 +118,7 @@ void HW4_Task1(){
 */
 #define X 8
 #define Y 8
-#define H X*Y
+#define H X*Y-1
 int board[Y][X];
 int operations = 0;
 
@@ -185,7 +185,7 @@ int testPosition(int startX, int startY){
 		for (int x = startX; x < X; x++) {
 			operations++;
 			board[y][x]	= 1;
-			if(testSolution(1+1,y,x)) return 1;
+			if(testSolution(2,y,x)) return 1;
 
 			printf("times = %d\n", ++counter);
 			printf("operations = %d\n", operations);
@@ -199,7 +199,7 @@ int testPosition(int startX, int startY){
 
 void HW4_Task2(){
 	clearBoard();
-	testPosition(0,0); // i try position 2,3, calculate long time but find solution on this position (operations = -1358925999)
+	testPosition(0,0);
 	printBoard();
 	printf("operations = %d\n", operations);
 }
