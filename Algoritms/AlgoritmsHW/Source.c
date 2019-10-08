@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define HWCount 4
+#define HWCount 5
 
 typedef struct{
 	char Theme[256];
@@ -23,6 +23,7 @@ void HW1_main();
 void HW2_main();
 void HW3_main();
 void HW4_main();
+void HW5_main();
 
 int main(){
 	setvbuf(stdout, NULL, _IONBF, 0);
@@ -30,7 +31,8 @@ int main(){
 		{.Theme = "Simple algorithms", .func = HW1_main},
 		{.Theme = "Asymptotic complexity of the algorithm. Recursion", .func = HW2_main},
 		{.Theme = "Search in an array. Simple sorting", .func = HW3_main},
-		{.Theme = "Search in an array. Simple sorting", .func = HW4_main}
+		{.Theme = "Dynamic programming. Return Search", .func = HW4_main},
+		{.Theme = "Dynamic data structures", .func = HW5_main}
 	};
 
 	HWMenu(homeWorks,HWCount);
