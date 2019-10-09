@@ -184,11 +184,11 @@ void HW3_Task2(){
 	fillArray(arr,Size);
 
 	printf("before: ");
-	printArray(arr, Size);
+	printIntArray(arr, Size);
 
 	cocktailSort(arr, Size	, swap );
 	printf("after:  ");
-	printArray(arr,Size);
+	printIntArray(arr,Size);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////

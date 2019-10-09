@@ -43,10 +43,17 @@ void fillArray(int* arr, int len) {
   }
 }
 
-void printArray(int* arr, int len) {
+void printIntArray(int* arr, int len) {
   int i;
   for (i = 0; i < len; i++) {
 	printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+
+void printCharArray(char* arr, int len) {
+  for (int i = 0; i < len; i++) {
+	printf("%c ", arr[i]);
   }
   printf("\n");
 }
