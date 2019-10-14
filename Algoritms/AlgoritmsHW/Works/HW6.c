@@ -250,6 +250,17 @@ void HW6_Task2(){
  *  in which to use all the knowledge gained in the lessons.
  *  Read data into a binary search tree. Search for any field in the database (age, weight)
 */
+
+typedef struct{
+	char FName[50];
+	int Age;
+}Person;
+
+typedef struct{
+	Person person;
+	int personalNumber;
+}Student;
+
 void HW6_Task3(){
 
 }
