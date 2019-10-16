@@ -77,7 +77,7 @@ void HW6_Task1(){
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
- *  1.
+ *  2.
  *  Implement a binary search tree
  *   a) Add a tree walk in various ways;
  *   b) Implement a search in the binary search tree;
@@ -172,37 +172,16 @@ void insert(Node **head, int value) {
 void preOrderTravers(Node* root) {
     if (root) {
         printf("%d ", root->data);
-        if (root->left || root->right)
-        {
-        	printf("(");
-        	if (root->left)
-        		preOrderTravers(root->left);
-        	else
-        		printf("NULL");
-        	printf(",");
-        	if (root->right)
-        		preOrderTravers(root->right);
-        	else
-        		printf("NULL");
-        	printf(")");
-        }
+        preOrderTravers(root->left);
+        preOrderTravers(root->right);
     }
 }
 
 void inOrderTravers(Node* root) {
     if (root) {
-    	printf("(");
-    		if (root->left)
-    			inOrderTravers(root->left);
-    		else
-    			printf("NULL");
-    		printf(",");
+    	inOrderTravers(root->left);
         printf("%d ", root->data);
-        if (root->right)
         inOrderTravers(root->right);
-        else
-        	printf("NULL");
-        printf(")");
     }
 }
 
@@ -242,7 +221,7 @@ void HW6_Task2(){
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
- *  1.
+ *  3.
  *  *** Develop a database of students from the two fields
  *  	“Name”,
  *  	“Age”,
