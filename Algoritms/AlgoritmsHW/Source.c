@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define HWCount 6
+#define HWCount 7
 
 typedef struct{
 	char Theme[256];
@@ -25,6 +25,7 @@ void HW3_main();
 void HW4_main();
 void HW5_main();
 void HW6_main();
+void HW7_main();
 
 int main(){
 	setvbuf(stdout, NULL, _IONBF, 0);
@@ -34,7 +35,8 @@ int main(){
 		{.Theme = "Search in an array. Simple sorting", .func = HW3_main},
 		{.Theme = "Dynamic programming. Return Search", .func = HW4_main},
 		{.Theme = "Dynamic data structures	дг ме гюбепьемн", .func = HW5_main},
-		{.Theme = "Trees", .func = HW6_main}
+		{.Theme = "Trees				дг ме гюбепьемн", .func = HW6_main},
+		{.Theme = "Counts. Algorithms on graphs.", .func = HW7_main}
 	};
 
 	HWMenu(homeWorks,HWCount);
@@ -53,6 +55,7 @@ int main(){
 
 void HWMenu(HW* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
+		printf("////////////////////////////////////////////////////////////////////////////////////\n");
 		printf("COMMAND: %d		HW Number: %d\n  Theme: %s\n\n",i,i+1, (array+i)->Theme);
 	}
 	printf("Exit command: -1\n");

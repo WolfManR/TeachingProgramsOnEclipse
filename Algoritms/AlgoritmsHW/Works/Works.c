@@ -14,6 +14,7 @@
 void TaskMenu(Task* array, int arrLength){
 	for(int i = 0; i < arrLength; i++){
 		printf("COMMAND: %d 		Task ¹: %d\n The task: \n%s\n\n",i ,(array + i)->Number, (array+i)->ToDo);
+		printf("***********************************************************************************************\n");
 	}
 	printf("Exit command: -1\n");
 
