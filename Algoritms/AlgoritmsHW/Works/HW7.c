@@ -32,6 +32,8 @@ void HW7_main(){
 	TaskMenu(tasks,TCount);
 }
 
+//What hold all GraphNode's?
+
 typedef struct DynamicArray{
 	struct GraphNode* graphs;
 	int size;
@@ -96,11 +98,18 @@ void enqueue(Queue *que, GraphNode *graph){
 	}
 }
 
-void dequeue(Queue *que){
-	if(que->first != NULL)
+GraphNode* dequeue(Queue *que){
+	GraphNode *result = malloc(sizeof(*result));
+	if(que->first != NULL){
+		*result = que->first->graph;
 		que->first = que->first->next;
-	else
+		return result;
+	}
+	else{
+		*result = que->last->graph;
 		que->last = NULL;
+		return result;
+	}
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -117,6 +126,29 @@ void HW7_Task1(){
  *  Write a recursive graph traversal function in width.
  *  Написать рекурсивную функцию обхода графа в ширину.
 */
+
+int widthTravers(GraphNode *start, GraphNode *stop) {
+	Queue *temp = malloc(sizeof(*temp));
+	initQueue(temp);
+  enqueue(temp, start);
+  start->used = 1;
+  while (temp->size != 0) {
+	GraphNode *current = dequeue(temp);
+	if (current->data == stop->data)
+	  return 1;
+
+
+	for (int i = 0; i < current->children->size; i++) {
+		GraphNode tempNode = current->children->graphs[i];
+	  if (tempNode.used != 1) {
+		enqueue(temp, &tempNode);
+		current->children->graphs[i].used = 1;
+	  }
+	}
+  }
+  return 0;
+}
+
 void HW7_Task2(){
 
 }
